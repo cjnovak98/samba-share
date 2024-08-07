@@ -1,3 +1,3 @@
 !#/bin/bash
 
-podman build -t samba-test samba
+podman build -t samba-image samba

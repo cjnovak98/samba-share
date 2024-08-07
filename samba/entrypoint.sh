@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CONFIG_FILE="/etc/samba/smb.conf"
+#CONFIG_FILE=""
 
 hostname=`hostname`
 set -e
@@ -13,6 +14,8 @@ netbios name = $hostname
 server string = $hostname
 security = user
 create mask = 0664
+client min protocol = NT1
+server min protocol = NT1
 directory mask = 0775
 force create mode = 0664
 force directory mode = 0775
@@ -126,5 +129,7 @@ EOH
         ;;
     esac
   done
+
 nmbd -D
+
 exec ionice -c 3 smbd -F --no-process-group --configfile="$CONFIG_FILE" < /dev/null

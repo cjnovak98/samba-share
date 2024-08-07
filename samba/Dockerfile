@@ -22,7 +22,7 @@ RUN chmod u+x /entrypoint.sh
 
 EXPOSE 137/udp 138/udp 139 445
 
-HEALTHCHECK --interval=60s --timeout=15s CMD smbclient -L \\localhost -U % -m SMB3
+HEALTHCHECK --interval=60s --timeout=15s CMD smbclient -L \\localhost -U % -m NT1
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["-h"]
